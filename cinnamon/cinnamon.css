@@ -153,19 +153,18 @@ StScrollBar {
   height: 1em; }
 
 .popup-slider-menu-item, .slider {
-  -slider-height: 4px;
-  -slider-background-color: #1c222e;
-  -slider-border-color: rgba(0, 0, 0, 0);
+  -slider-height: 0.3em;
+  -slider-background-color: #38455c;
+  -slider-border-color: rgba(42, 51, 68, 0.3);
   -slider-active-background-color: #cd7ebf;
-  -slider-active-border-color: rgba(0, 0, 0, 0);
-  -slider-border-width: 0;
-  -slider-handle-radius: 4px;
-  height: 18px;
+  -slider-active-border-color: rgba(42, 51, 68, 0.3);
+  -slider-border-width: 1px;
+  -slider-handle-radius: 0.5em;
+  height: 1em;
   min-width: 15em;
   border: 0 solid transparent;
   border-right-width: 1px;
-  border-left-width: 5px;
-  color: transparent; }
+  border-left-width: 5px; }
   .popup-menu-item:active .popup-slider-menu-item,
   .popup-menu-item:active .slider {
     -slider-background-color: rgba(0, 0, 0, 0.2);
@@ -239,24 +238,24 @@ StScrollBar {
 .popup-combo-menu {
   color: #d8dee9;
   border: 1px solid #1c222e;
-  border-radius: 3px;
+  border-radius: 6px;
   background-color: rgba(42, 51, 68, 0.99); }
   .menu.top,
   .popup-menu.top,
   .top.popup-combo-menu {
-    border-radius: 0 0 3px 3px; }
+    border-radius: 0 0 6px 6px; }
   .menu.bottom,
   .popup-menu.bottom,
   .bottom.popup-combo-menu {
-    border-radius: 3px 3px 0 0; }
+    border-radius: 6px 6px 0 0; }
   .menu.left,
   .popup-menu.left,
   .left.popup-combo-menu {
-    border-radius: 0 3px 3px 0; }
+    border-radius: 0 6px 6px 0; }
   .menu.right,
   .popup-menu.right,
   .right.popup-combo-menu {
-    border-radius: 3px 0 0 3px; }
+    border-radius: 6px 0 0 6px; }
   .menu-arrow,
   .popup-menu-arrow {
     icon-size: 16px; }
@@ -986,7 +985,7 @@ StScrollBar {
 
 #menu-search-entry {
   width: 250px;
-  height: 15px;
+  min-height: 15px;
   font-weight: normal;
   caret-color: #d8dee9; }
 
@@ -1119,7 +1118,7 @@ StScrollBar {
       padding-left: 1px; }
   .grouped-window-list-item-box:active, .grouped-window-list-item-box:checked {
     color: #fff;
-    border-color: #516283; }
+    border-color: #7688aa; }
   .grouped-window-list-item-box:hover, .grouped-window-list-item-box:active:hover, .grouped-window-list-item-box:focus, .grouped-window-list-item-box:active:focus, .grouped-window-list-item-box:focus:hover, .grouped-window-list-item-box:active:focus:hover {
     color: #fff;
     border-color: #cd7ebf; }
