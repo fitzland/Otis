@@ -1,10 +1,16 @@
-.xfce4-panel.panel {
+.xfce4-panel {
+
+  border-radius: 0;
+
+  .panel {
     background-color: $panel_bg_color;
     text-shadow: none;
     -gtk-icon-shadow: none;
 
-    button.flat { @extend %panelbutton; }
+    // the .open_group class is used to avoid theming of docklike-plugin buttons and keep them as default
+    button.flat:not(.open_group) { @extend %panelbutton; }
   }
+}
 
   #tasklist-button {
     color: transparentize($panel_fg_color, 0.2);
@@ -54,4 +60,12 @@
     &:hover, &:checked {
         background-color: $selected_bg_color;
     }
+}
+
+/* Vala-appmenu-plugin*/
+
+.-vala-panel-appmenu-core scrolledwindow,
+.-vala-panel-appmenu-private > menuitem,
+.-vala-panel-appmenu-private > menuitem:first-child > label {
+    color: $panel_fg_color;
 }

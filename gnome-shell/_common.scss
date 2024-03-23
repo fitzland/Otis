@@ -171,7 +171,11 @@ $slider_size: 16px;
   background-color: darken($osd_bg_color,5%);
   box-shadow: $depth6;
 
-  .modal-dialog-content-box { padding: 24px; }
+  .modal-dialog-content-box {
+    margin: 32px 40px;
+    spacing: 32px;
+    max-width: 28em;
+  }
   .run-dialog-entry {
     width: 20em;
     margin-bottom: 6px;
@@ -227,7 +231,6 @@ $slider_size: 16px;
 
 /* End Session Dialog */
 .end-session-dialog {
-  spacing: 42px;
   border: none;
   & .modal-dialog-linked-button:last-child {
     @include gradient();
@@ -373,7 +376,7 @@ $slider_size: 16px;
 
 .prompt-dialog {
   //this is the width of the entire modal popup
-  width: 34em;
+  width: 28em;
   border: none;
   border-radius: 10px;
 
@@ -524,6 +527,7 @@ $slider_size: 16px;
   .popup-menu-item {
     border-radius: 0;
     margin: 0;
+    background-color: lighten($bg_color, 4%) !important;
 
     &:last-child {
       border-radius: 0 0 6px 6px;
@@ -548,6 +552,7 @@ $slider_size: 16px;
   spacing: 6px;
   border-radius: 6px;
   background-gradient-direction: none;
+  color: $fg_color !important;
 
   &:ltr {padding-left: 6px;}
   &:rtl {padding-right: 6px;}
@@ -630,10 +635,6 @@ $slider_size: 16px;
 .osd-window {
   text-align: center;
   font-weight: bold;
-  spacing: 1em;
-  margin: 32px;
-  min-width: 64px;
-  min-height: 64px;
 
   .osd-monitor-label { font-size: 3em; }
   .level {
@@ -770,7 +771,6 @@ $slider_size: 16px;
   color: $_bubble_fg_color;
   background-color: $_bubble_bg_color;
   border: 1px solid $borders_color;
-  border-radius: 7px;
   box-shadow: 0px 0px 7px transparentize($borders_color, 0.2);
   padding: 12px;
 }
@@ -1017,7 +1017,7 @@ $slider_size: 16px;
         color:darken($fg_color,5%);
       }
 
-    .calendar-day-base {
+    .calendar-day-base, .calendar-day {
       font-size: 80%;
       text-align: center;
       width: 2.4em; height: 2.4em;
@@ -1027,13 +1027,13 @@ $slider_size: 16px;
       color: $fg_color;
       &:hover, &:focus { 
         background-color: lighten($bg_color, 10%); 
-        box-shadow: none;
+        box-shadow: none !important;
       }
       &:active,&:selected {
         color: $selected_fg_color;
         background-color: $selected_bg_color;
         border-color: transparent; //avoid jumparound due to today
-        box-shadow: none;
+        box-shadow: none !important;
       }
       &.calendar-day-heading {  //day of week heading
         color: darken($fg_color, 10%);
@@ -1100,9 +1100,9 @@ $slider_size: 16px;
       /* Message list */
       .message-list {
         border-color: lighten($base_color, 2%);
-        .message-title, .message-content, .message-body {
-          color: darken($fg_color,4%);
-        }
+      }
+      .message-title, .message-content, .message-body {
+        color: darken($fg_color,4%);
       }
 
         .message-list-sections {
@@ -1131,12 +1131,15 @@ $slider_size: 16px;
 
         .message {
           &:hover,&:focus { 
-            background-color: lighten($bg_color, 6%);
+           @include button(hover);
+           border: none;
+           text-shadow: none;
           }
-          background: lighten($bg_color, 2%);
-          border: 1px solid $main_dark;
-          border-radius: 7px;
+          @include button(normal);
+          border: none;
           box-shadow: none;
+          border-radius: 10px;
+          text-shadow: none;
         }
 
           .message-secondary-bin > .event-time {
@@ -1160,11 +1163,12 @@ $slider_size: 16px;
           .message-content {
           //  color: darken($fg_color,20%);
             padding: 10px;
-            *:hover > StIcon,
-            *:focus > StIcon, {
-              color: $red;
-            }
           }
+  // close button
+  .message-close-button:hover {
+    background-color: $red;
+  }
+
 
 /* Media Controls */
 .message-media-control {
@@ -1585,6 +1589,7 @@ $slider_size: 16px;
     transition-duration: 100ms;
     text-align: center;
     box-shadow: none;
+    border-radius: 12px;
   }
 
 /* App Folders */
@@ -1596,6 +1601,7 @@ $slider_size: 16px;
 .app-folder-dialog { //style like the dash
   background-color:  $_bubble_bg_color;
   border: none;
+  box-shadow: none;
   
   & .folder-name-label { color: $fg_color; }
   
@@ -1684,17 +1690,17 @@ $slider_size: 16px;
   }
   
   .page-navigation-arrow {
-    &  > StIcon {
-      margin: 6px;
-      padding: 18px;
-      width: 24px;
-      height: 24px;
-      border-radius: 99px;
-    }
+     
+    margin: 6px;
+    padding: 18px;
+    width: 24px;
+    height: 24px;
+    border-radius: 99px;
+    
   
-    &:insensitive > StIcon { @include button(undecorated, $osd_fg_color, transparentize($osd_bg_color, 0.5));}
-    &:hover > StIcon { background-color: transparentize($selected_bg_color, 0.5);}
-    &:active > StIcon {background-color: $selected_bg_color;}
+    &:insensitive { @include button(undecorated, $osd_fg_color, transparentize($osd_bg_color, 0.5));}
+    &:hover { background-color: transparentize($selected_bg_color, 0.5);}
+    &:active {background-color: $selected_bg_color;}
   }
   
 
@@ -2247,6 +2253,7 @@ $slider_size: 16px;
   border-radius: 12px;
 
   .icon-button, .button {
+    color: $fg_color;
     padding: 6px*1.75;
   }
 }
@@ -2255,17 +2262,19 @@ $base_padding: 6px;
 
 .quick-toggle {
   border-radius: 99px;
-  min-height: 40px;
 
   &:checked { 
     @include button(active, lighten($base_color, 5%));
-    color: $selected_fg_color;
+    &:hover { @include button(active, lighten($base_color, 8%)); }
+    &, &:hover { color: $selected_fg_color; }
   }
+
+  &, &:hover, &:checked, &:checked:hover { border: none; }
 
   & > StBoxLayout { spacing: $base_padding; }
 
   /* Move padding into the box; this is to allow menu arrows
-      to extend to the border */
+     to extend to the border */
   &.button { padding: 0; }
   & > StBoxLayout { padding: 0 6px*2; }
   &:ltr > StBoxLayout { padding-left: $base_padding*2.5; }
@@ -2279,20 +2288,45 @@ $base_padding: 6px;
   &:ltr > StBoxLayout { padding-right: 0; }
   &:rtl > StBoxLayout { padding-left: 0; }
 
+  & .quick-toggle {
+    min-width: auto;
+    max-width: auto;
+
+    &:ltr { border-radius: 99px 0 0 99px; }
+    &:rtl { border-radius: 0 99px 99px 0; }
+
+    &:ltr:last-child { border-radius: 99px; }
+    &:rtl:last-child { border-radius: 99px; }
+  }
+
+
   & .quick-toggle-arrow {
     background-color: transparentize($fg_color, 0.9);
     padding: $base_padding $base_padding*1.75;
-
+    border-width: 0;
+    &:checked { 
+      @include button(active, lighten($base_color, 3%));
+      &:hover { @include button(active, lighten($base_color, 8%)); }
+      &, &:hover {
+        color: $selected_fg_color;
+        border-width: 0;
+      }
+    }
+    &:hover {
+      background-color: lighten($base_color, 5%);
+    }
+  
     &:ltr { border-radius: 0 99px 99px 0; }
     &:rtl { border-radius: 99px 0 0 99px; }
   }
 }
 
 .quick-toggle-menu {
-  background-color: lighten($bg_color, 2%);
+  background-color: lighten($bg_color, 2%) !important;
   border-radius: 12px;
   padding: $base_padding*2;
   margin: $base_padding*2 $base_padding*3 0;
+  color: $fg_color;
 
   .popup-menu-item > StIcon { -st-icon-style: symbolic; }
 
@@ -2307,7 +2341,10 @@ $base_padding: 6px;
       padding: 1.5 * $base_padding;
       background-color: lighten($bg_color, 10%);
 
-      &.active { background-color: $selected_bg_color; }
+      &.active { 
+        background-color: $selected_bg_color; 
+        color: $selected_fg_color;
+      }
     }
   }
 }
